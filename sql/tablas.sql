@@ -12,7 +12,7 @@ CREATE TABLE tipo_habitacion (
 );
 
 
--- ------------------------ metodos de pago
+--------------------------- metodos de pago ----------------------------------------------------------
 CREATE TABLE Metodo_Pago (
     ID_Pago INT NOT NULL PRIMARY KEY,
     Nombre_Pago VARCHAR(50) NOT NULL
@@ -77,6 +77,3 @@ CREATE TABLE reservas (
 );
 
 DROP TABLE reservas;
-
-
-
