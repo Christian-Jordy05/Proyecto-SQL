@@ -1,6 +1,8 @@
--- Active: 1724724684814@@127.0.0.1@3306@hoteles
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 
 USE hoteles;
+
+-----------------------------------------------Consulta la disponibilidad-------------------------------------------
 
 DELIMITER //
 CREATE PROCEDURE consultar_disponibilidad(IN fecha DATE, IN hotel VARCHAR(50))
@@ -14,6 +16,12 @@ BEGIN
     );
 END //
 DELIMITER ;
+CALL consultar_disponibilidad("2024-09-09", "H001")
+
+
+
+
+-----------------------------------------------Cambia el estado de las reservas-------------------------------------------
 
 DELIMITER //
 CREATE PROCEDURE cambiar_estado_reserva(IN reserva_id INT, IN nuevo_estado VARCHAR(50))
@@ -24,11 +32,12 @@ BEGIN
 END //
 DELIMITER ;
 
-CALL cambiar_estado_reserva(5, "Cancelada");
+CALL cambiar_estado_reserva(7, "confirmado");
 
-CALL consultar_disponibilidad("2024-09-09", "H001")
 
---------------------------------------------------------------1----------------------------------------------- 
+
+-----------------------------------------------agrega las reservas-------------------------------------------
+
 
 DELIMITER //
 
@@ -45,16 +54,13 @@ BEGIN
     INSERT INTO reservas (ID_Cliente, ID_Hotel, ID_Habitacion, Fecha_Entrada, Fecha_Salida, Fecha_Creacion, estado_reservas, ID_Pago
     ) VALUES (p_ID_Cliente, p_ID_Hotel, p_ID_Habitacion, p_Fecha_Entrada, p_Fecha_Salida, p_Fecha_Creacion, 'Reservado', p_ID_Pago
     );
-    UPDATE habitacion
-    SET reservada = TRUE
-    WHERE ID_Habitacion = p_ID_Habitacion;
 END //
-
 DELIMITER ;
-CALL agregar_reserva('5-6789-0123','H005',  'HAB005', '2024-10-03','2024-09-01',1001
-);
+CALL agregar_reserva('5-6789-0123', 'H001', 'HAB001', '2024-12-10', '2024-12-15', '2024-08-27', 1002);
 
---------------------------------------------------------------3----------------------------------------------- 
+
+-----------------------------------------------muestra las ocupaciones-------------------------------------------
+
 DELIMITER //
 
 CREATE PROCEDURE calcular_ocupacion(
@@ -87,3 +93,27 @@ END //
 DELIMITER ;
 
 CALL calcular_ocupacion('H001', '2024-09-01', '2024-09-07');
+
+
+
+-----------------------------------------------elimina una reservacion-------------------------------------------
+
+DELIMITER //
+
+CREATE PROCEDURE gestionar_reserva(IN p_ID_Reserva INT)
+BEGIN
+    DECLARE EXIT HANDLER FOR SQLEXCEPTION
+    BEGIN
+        ROLLBACK;
+    END;
+
+    START TRANSACTION;
+
+    DELETE FROM reservas
+    WHERE ID_Reserva = p_ID_Reserva;
+
+    COMMIT;
+END //
+DELIMITER ;
+
+CALL gestionar_reserva(1)
