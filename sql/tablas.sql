@@ -1,23 +1,9 @@
--- Active: 1724534642553@@127.0.0.1@3306@hoteles
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 create DATABASE hoteles;
 
 DROP DATABASE hoteles;
 
 use hoteles;
-
-----------------------------------------------------------------tipo de habitacion----------------------------------------------------------------
-CREATE TABLE tipo_habitacion (
-    ID_Tipo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(50) NOT NULL
-);
-
-
---------------------------- metodos de pago ----------------------------------------------------------
-CREATE TABLE Metodo_Pago (
-    ID_Pago INT NOT NULL PRIMARY KEY,
-    Nombre_Pago VARCHAR(50) NOT NULL
-);
-
 
 
 -------------------------------------CLients--------------------------------
@@ -30,32 +16,6 @@ CREATE TABLE Clientes (
     Telefono VARCHAR(20) NOT NULL
 );
 
-
-
-----------------------------------------------------------------hoteles----------------------------------------------------------------
-CREATE TABLE Hotel (
-    ID_hotel VARCHAR(50) NOT NULL PRIMARY KEY,
-    nombre_hotel VARCHAR(50) NOT NULL,
-    provincia VARCHAR(50) NOT NULL,
-    direccion VARCHAR(50) NOT NULL,
-    estrellas VARCHAR(50) NOT NULL,
-    servicio VARCHAR(120)
-);
-
-
-
-----------------------------------------------------------------habitaciones----------------------------------------------------------------
-
-CREATE TABLE habitacion (
-    ID_Habitacion VARCHAR(50) NOT NULL PRIMARY KEY,
-    ID_Hotel VARCHAR(50) NOT NULL,
-    ID_Tipo INT NOT NULL,
-    num_habitacion VARCHAR(50) NOT NULL,
-    precio DECIMAL(10, 2) NOT NULL,
-    reservada BOOLEAN DEFAULT FALSE,
-    FOREIGN KEY (ID_Hotel) REFERENCES Hotel (ID_Hotel),
-    FOREIGN KEY (ID_Tipo) REFERENCES tipo_habitacion (ID_Tipo)
-);
 
 
 ---------------------------------Reservas
@@ -77,3 +37,57 @@ CREATE TABLE reservas (
 );
 
 DROP TABLE reservas;
+
+--------------------------- metodos de pago ----------------------------------------------------------
+CREATE TABLE Metodo_Pago (
+    ID_Pago INT NOT NULL PRIMARY KEY,
+    Nombre_Pago VARCHAR(50) NOT NULL
+);
+
+
+----------------------------------------------------------------hoteles----------------------------------------------------------------
+CREATE TABLE Hotel (
+    ID_hotel VARCHAR(50) NOT NULL PRIMARY KEY,
+    nombre_hotel VARCHAR(50) NOT NULL,
+    provincia VARCHAR(50) NOT NULL,
+    direccion VARCHAR(50) NOT NULL,
+    estrellas VARCHAR(50) NOT NULL,
+    servicio VARCHAR(120)
+);
+----------------------------------------------------------------habitaciones----------------------------------------------------------------
+
+CREATE TABLE habitacion (
+    ID_Habitacion VARCHAR(50) NOT NULL PRIMARY KEY,
+    ID_Hotel VARCHAR(50) NOT NULL,
+    ID_Tipo INT NOT NULL,
+    num_habitacion VARCHAR(50) NOT NULL,
+    precio DECIMAL(10, 2) NOT NULL,
+    reservada VARCHAR(50) DEFAULT 'Disponible',
+    FOREIGN KEY (ID_Hotel) REFERENCES Hotel (ID_Hotel),
+    FOREIGN KEY (ID_Tipo) REFERENCES tipo_habitacion (ID_Tipo)
+);
+
+
+
+----------------------------------------------------------------tipo de habitacion----------------------------------------------------------------
+CREATE TABLE tipo_habitacion (
+    ID_Tipo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    nombre VARCHAR(50) NOT NULL
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

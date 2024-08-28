@@ -197,7 +197,7 @@ VALUES (
         1,
         'A01',
         200.00,
-        FALSE
+        "disponible"
     ),
     (
         'HAB002',
@@ -205,7 +205,7 @@ VALUES (
         2,
         'A02',
         300.00,
-        FALSE
+        "disponible"
     ),
     (
         'HAB003',
@@ -213,7 +213,7 @@ VALUES (
         3,
         'A03',
         500.00,
-        FALSE
+        "disponible"
     ),
     (
         'HAB004',
@@ -221,7 +221,7 @@ VALUES (
         4,
         'A04',
         540.00,
-        FALSE
+        "disponible"
     ),
     (
         'HAB005',
@@ -229,7 +229,7 @@ VALUES (
         5,
         'A05',
         1000.00,
-        FALSE
+        "disponible"
     );
 
 
