@@ -74,3 +74,20 @@ CREATE TABLE tipo_habitacion (
     ID_Tipo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL
 );
+
+
+CREATE TABLE Administradores (
+    ID_admin INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telefono VARCHAR(20),
+    contraseña VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE reportes (
+    id VARCHAR(50) NOT NULL PRIMARY KEY,
+    ID_hotel VARCHAR(50) NOT NULL,
+    fecha DATE,
+    reservas_totales INT,
+    FOREIGN KEY (ID_hotel) REFERENCES Hotel(ID_hotel) 
+);
