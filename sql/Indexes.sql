@@ -11,3 +11,7 @@ CREATE INDEX idx_habitacion ON habitacion (num_habitacion, reservada, precio)
 CREATE INDEX idx_tipo_habitacion ON tipo_habitacion (nombre, ID_Tipo);
 
 
+
+
+
+
