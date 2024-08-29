@@ -13,38 +13,45 @@ INSERT INTO
     )
 VALUES (
         "1-2345-6789",
-        'Ana',
+        'Marylin',
         'Martínez',
-        'ana.martinez@email.com',
-        '555-1234'
+        'marylinmartinez@gmail.com',
+        '8555-1234'
     ),
     (
         "2-3456-7890",
         'Luis',
-        'García',
-        'luis.garcia@email.com',
-        '555-5678'
+        'Segura',
+        'luissegura@gmail.com',
+        '8725-5678'
     ),
     (
         "3-4567-8901",
-        'Marta',
-        'López',
-        'marta.lopez@email.com',
-        '555-8765'
+        'Steven',
+        'Salas',
+        'stevensalas@gmail.com',
+        '6792-8765'
     ),
     (
         "4-5678-9012",
-        'Carlos',
-        'Fernández',
-        'carlos.fernandez@email.com',
-        '555-4321'
+        'Keylor',
+        'Villalobos',
+        'KeylorVillalobos@gmail.com',
+        '8398-4321'
+    ),
+    (
+        "4-5678-9012",
+        'Dereck',
+        'Vallestero',
+        'Dreckvallestero@gmail.com',
+        '7830-4456'
     ),
     (
         "5-6789-0123",
-        'Isabel',
-        'Gómez',
-        'isabel.gomez@email.com',
-        '555-6789'
+        'Susana',
+        'Cordero',
+        'Susanacordero@gmail.com',
+        '7389-6789'
     );
 
 
@@ -241,3 +248,35 @@ VALUES ('Simple'),
     ('doble'),
     ('Suite'),
     ('Presidencial');  
+
+  VARCHAR(100) NOT NULL,
+    VARCHAR(100) UNIQUE NOT NULL,
+     VARCHAR(20),
+    
+
+INSERT INTO
+  administradores (
+    nombre,
+    email,
+    telefono,
+    contraseña
+    )
+VALUES (
+        'Jordy',
+        'jordymartinez@gmail.com',
+        '8739-1234',
+        'pass1'
+    ),
+    (
+        'Elian',
+        'elianguevara@gmail.com',
+        '6525-5678',
+        'pass2'
+    ),
+    (
+        'Yacith',
+        'yacithdelgado@gmail.com',
+        '6126-4011',
+        'pass3'
+    );
+    
