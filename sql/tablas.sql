@@ -75,19 +75,3 @@ CREATE TABLE tipo_habitacion (
     nombre VARCHAR(50) NOT NULL
 );
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
