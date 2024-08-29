@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 create DATABASE hoteles;
 
 DROP DATABASE hoteles;
@@ -74,20 +74,3 @@ CREATE TABLE tipo_habitacion (
     ID_Tipo INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(50) NOT NULL
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
