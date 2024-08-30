@@ -1,10 +1,10 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 
 DELIMITER //
 
 --------------------------Actualiza el estado de la habitacion a "no disponible" por si se elimino una reservacion----------------------
 
-CREATE TRIGGER trg_update_disponibilidad_reserva
+CREATE TRIGGER no_disponibilidad
 AFTER INSERT ON reservas
 FOR EACH ROW
 BEGIN
@@ -26,7 +26,10 @@ END //
 
 DELIMITER ;
 
-DROP TRIGGER IF EXISTS trg_update_disponibilidad_reserva
+DROP TRIGGER  no_disponibilidad
+
+DROP TRIGGER  disponibilidad
+
 
 
 
