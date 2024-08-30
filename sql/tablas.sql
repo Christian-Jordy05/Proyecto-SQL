@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 
 CREATE DATABASE hoteles;
 
@@ -10,8 +10,6 @@ DROP DATABASE hoteles;
 ----- creado de las tablas-----------
 CALL crear_tablas ();
 
-
----- borrador de las tablas-----------
 DROP PROCEDURE crear_tablas;
 
 

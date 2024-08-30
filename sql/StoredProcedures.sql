@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 
 USE hoteles;
 
@@ -119,7 +119,7 @@ END //
 DELIMITER ;
 
 -- eliminar las reservaciones---------------------
-CALL gestionar_reserva(2);
+CALL gestionar_reserva(8);
 
 DROP Procedure gestionar_reserva;
 
@@ -148,11 +148,11 @@ BEGIN
 END//
 DELIMITER ;
 
------------------------eliminar el procedure de reportes--------------
+---------------------eliminar el procedure de reportes--------------
 
 DROP Procedure `mandarReportes`
 
 -----------------------mandar reportes---------------------------------
-CALL mandarReportes("mantenimiento","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
+CALL mandarReportes("mante","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
 
 
