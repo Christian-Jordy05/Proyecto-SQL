@@ -58,7 +58,7 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-CALL agregar_reserva('1-2345-6789', 'H002', 'HAB002', '2024-7-17', '2024-7-20', '2024-06-27', 1002);
+CALL agregar_reserva('1-2345-6789', 'H002', 'HAB004', '2024-7-17', '2024-7-20', '2024-06-27', 1002);
 DROP Procedure agregar_reserva
 
 -----------------------------------------------muestra las ocupaciones-------------------------------------------
