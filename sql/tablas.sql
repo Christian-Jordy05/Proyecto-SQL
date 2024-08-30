@@ -63,7 +63,7 @@ BEGIN
         ID_Habitacion VARCHAR(50),
         Fecha_Entrada DATE NOT NULL,
         Fecha_Salida DATE NOT NULL,
-        Fecha_Creacion DATE NOT NULL DEFAULT CURRENT_DATE,
+        Fecha_Creacion DATE NOT NULL DEFAULT (CURRENT_DATE),
         estado_reservas VARCHAR(50) DEFAULT 'Reservada',
         ID_Pago INT,
         FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID_Cliente),
@@ -71,13 +71,13 @@ BEGIN
         FOREIGN KEY (ID_Habitacion) REFERENCES habitacion (ID_Habitacion),
         FOREIGN KEY (ID_Pago) REFERENCES metodo_pago (ID_Pago)
     );
-   CREATE TABLE reportes (
-    id_reporte INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    tipo VARCHAR(50) NOT NULL,
-    contenido VARCHAR(500) NOT NULL,
-    fecha_creacion DATE,
-    hora TIME,
-    CONSTRAINT chk_tipo CHECK (tipo IN ('mantenimiento', 'limpiar', 'reparacion', 'otros'))
+    CREATE TABLE reportes (
+        id_reporte INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+        tipo VARCHAR(50) NOT NULL,
+        contenido VARCHAR(500) NOT NULL,
+        fecha_creacion DATE,
+        hora TIME,
+        CONSTRAINT chk_tipo CHECK (tipo IN ('mantenimiento', 'limpiar', 'reparacion', 'otros'))
     );
 
 END $$
