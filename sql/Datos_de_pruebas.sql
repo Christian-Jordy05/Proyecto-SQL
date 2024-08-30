@@ -1,8 +1,15 @@
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 USE hoteles;
 
+
+---------agregador de todo los datos a las tablas---------------
 CALL insertar_datos_de_prueba ();
 
+
+---------eliminador de todo los datos a las tablas---------------
 DROP PROCEDURE insertar_datos_de_prueba;
+
+
 
 DELIMITER $$
 CREATE Procedure insertar_datos_de_prueba()
