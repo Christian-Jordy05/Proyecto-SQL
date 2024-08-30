@@ -1,3 +1,4 @@
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 -- Se eligió crear un indice en la tabla hotel para mostrar la información básica, como el nombre, dirección y calificación.
 CREATE UNIQUE INDEX info_hotel ON hotel (ID_hotel, nombre_hotel, direccion, estrellas);
 
@@ -9,6 +10,8 @@ CREATE INDEX idx_habitacion ON habitacion (num_habitacion, reservada, precio)
 
 -- selegio este indice para hacer eficas para verificar el tipo de habitcion de menera rapida y eficiente.
 CREATE INDEX idx_tipo_habitacion ON tipo_habitacion (nombre, ID_Tipo);
+
+
 
 
 
