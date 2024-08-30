@@ -44,13 +44,22 @@ CREATE PROCEDURE agregar_reserva(
     IN p_ID_Pago INT
 )
 BEGIN
-    INSERT INTO reservas (ID_Cliente, ID_Hotel, ID_Habitacion, Fecha_Entrada, Fecha_Salida, Fecha_Creacion, estado_reservas, ID_Pago
-    ) VALUES (p_ID_Cliente, p_ID_Hotel, p_ID_Habitacion, p_Fecha_Entrada, p_Fecha_Salida, p_Fecha_Creacion, 'Reservada', p_ID_Pago
-    );
+    IF NOT EXISTS (
+        SELECT 1
+        FROM reservas
+        WHERE Fecha_Entrada = p_Fecha_Entrada
+        OR Fecha_Salida = p_Fecha_Salida
+    )
+    THEN
+        INSERT INTO reservas (ID_Cliente, ID_Hotel, ID_Habitacion, Fecha_Entrada, Fecha_Salida, Fecha_Creacion, estado_reservas, ID_Pago)
+        VALUES (p_ID_Cliente, p_ID_Hotel, p_ID_Habitacion, p_Fecha_Entrada, p_Fecha_Salida, p_Fecha_Creacion, 'Reservada', p_ID_Pago);
+    ELSE
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'ya existe una reservacion con esa fecha';
+    END IF;
 END //
 DELIMITER ;
-CALL agregar_reserva('1-2345-6789', 'H002', 'HAB004', '2024-7-10', '2024-7-17', '2024-06-27', 1002);
->>>>>>> dev
+CALL agregar_reserva('1-2345-6789', 'H002', 'HAB002', '2024-7-17', '2024-7-20', '2024-06-27', 1002);
+DROP Procedure agregar_reserva
 
 -----------------------------------------------muestra las ocupaciones-------------------------------------------
 
@@ -154,5 +163,4 @@ DROP Procedure `mandarReportes`
 
 -----------------------mandar reportes---------------------------------
 CALL mandarReportes("mante","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
-
 
