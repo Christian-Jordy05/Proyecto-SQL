@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 USE hoteles;
 
 
@@ -6,9 +6,8 @@ USE hoteles;
 CALL insertar_datos_de_prueba ();
 
 
----------eliminador de todo los datos a las tablas---------------
+---------eliminador de todo los datos a las tablas--------------
 DROP PROCEDURE insertar_datos_de_prueba;
-
 
 
 DELIMITER $$
@@ -211,20 +210,15 @@ BEGIN
         );
     INSERT INTO
         Metodo_Pago (ID_Pago, Nombre_Pago)
-    VALUES (1001, 'Tarjeta de Crédito'),
-        (1002, 'PayPal'),
+    VALUES 
+        (1001, 'Tarjeta de credito'),
         (1003, 'simpe movil'),
         (1004, 'efectivo'),
+        (1002, 'PayPal'),
         (1005, 'bitcoin');
     INSERT INTO
-        Clientes (
-            ID_Cliente,
-            Nombre,
-            Apellido,
-            Email,
-            Telefono
-        )
-    VALUES (
+        Clientes (ID_Cliente,Nombre,Apellido,Email,Telefono)
+    VALUES(
             "1-2345-6789",
             'Marylin',
             'Martínez',

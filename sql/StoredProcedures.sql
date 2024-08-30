@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 
 USE hoteles;
 
@@ -58,7 +58,7 @@ BEGIN
     END IF;
 END //
 DELIMITER ;
-CALL agregar_reserva('1-2345-6789', 'H002', 'HAB002', '2024-7-17', '2024-7-20', '2024-06-27', 1002);
+CALL agregar_reserva('1-2345-6789', 'H002', 'HAB004', '2024-7-17', '2024-7-20', '2024-06-27', 1002);
 DROP Procedure agregar_reserva
 
 -----------------------------------------------muestra las ocupaciones-------------------------------------------
@@ -128,7 +128,7 @@ END //
 DELIMITER ;
 
 -- eliminar las reservaciones---------------------
-CALL gestionar_reserva(2);
+CALL gestionar_reserva(8);
 
 DROP Procedure gestionar_reserva;
 
@@ -157,10 +157,10 @@ BEGIN
 END//
 DELIMITER ;
 
------------------------eliminar el procedure de reportes--------------
+---------------------eliminar el procedure de reportes--------------
 
 DROP Procedure `mandarReportes`
 
 -----------------------mandar reportes---------------------------------
-CALL mandarReportes("mantenimiento","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
+CALL mandarReportes("mante","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
 

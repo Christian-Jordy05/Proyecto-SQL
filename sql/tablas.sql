@@ -1,4 +1,4 @@
--- Active: 1724794029309@@127.0.0.1@3306@hoteles
+-- Active: 1724787581423@@127.0.0.1@3306@hoteles
 
 CREATE DATABASE hoteles;
 
@@ -10,8 +10,6 @@ DROP DATABASE hoteles;
 ----- creado de las tablas-----------
 CALL crear_tablas ();
 
-
----- borrador de las tablas-----------
 DROP PROCEDURE crear_tablas;
 
 
@@ -65,7 +63,7 @@ BEGIN
         ID_Habitacion VARCHAR(50),
         Fecha_Entrada DATE NOT NULL,
         Fecha_Salida DATE NOT NULL,
-        Fecha_Creacion DATE NOT NULL,
+        Fecha_Creacion DATE NOT NULL DEFAULT CURRENT_DATE,
         estado_reservas VARCHAR(50) DEFAULT 'Reservada',
         ID_Pago INT,
         FOREIGN KEY (ID_Cliente) REFERENCES clientes (ID_Cliente),
