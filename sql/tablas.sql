@@ -1,4 +1,4 @@
--- Active: 1724682181883@@127.0.0.1@3306
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 
 CREATE DATABASE hoteles;
 
@@ -6,9 +6,14 @@ USE hoteles;
 
 DROP DATABASE hoteles;
 
+
+----- creado de las tablas-----------
 CALL crear_tablas ();
 
+
+---- borrador de las tablas-----------
 DROP PROCEDURE crear_tablas;
+
 
 DELIMITER $$
 CREATE PROCEDURE crear_tablas()
@@ -68,12 +73,17 @@ BEGIN
         FOREIGN KEY (ID_Habitacion) REFERENCES habitacion (ID_Habitacion),
         FOREIGN KEY (ID_Pago) REFERENCES metodo_pago (ID_Pago)
     );
-    CREATE TABLE reportes (
-        id VARCHAR(50) NOT NULL PRIMARY KEY,
-        ID_hotel VARCHAR(50) NOT NULL,
-        fecha DATE,
-        reservas_totales INT,
-        FOREIGN KEY (ID_hotel) REFERENCES Hotel (ID_hotel)
+   CREATE TABLE reportes (
+    id_reporte INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(50) NOT NULL,
+    contenido VARCHAR(500) NOT NULL,
+    fecha_creacion DATE,
+    hora TIME,
+    CONSTRAINT chk_tipo CHECK (tipo IN ('mantenimiento', 'limpiar', 'reparacion', 'otros'))
     );
+
 END $$
 DELIMITER ;
+
+
+

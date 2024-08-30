@@ -1,4 +1,4 @@
--- Active: 1724682181883@@127.0.0.1@3306@hoteles
+-- Active: 1724794029309@@127.0.0.1@3306@hoteles
 
 USE hoteles;
 
@@ -91,18 +91,68 @@ CALL calcular_ocupacion('H002', '2024-09-01', '2024-09-07');
 DELIMITER //
 CREATE PROCEDURE gestionar_reserva(IN p_ID_Reserva INT)
 BEGIN
+    DECLARE reserva_existe  INT ;
+    -- manejo de error
     DECLARE EXIT HANDLER FOR SQLEXCEPTION
     BEGIN
         ROLLBACK;
+        SELECT 'Error al eliminar la reserva' as error_message;
     END;
 
     START TRANSACTION;
 
-    DELETE FROM reservas
+    
+
+    SELECT COUNT(*) INTO reserva_existe
+    FROM reservas
     WHERE ID_Reserva = p_ID_Reserva;
 
-    COMMIT;
+    IF reserva_existe = 0 THEN
+        SELECT 'la reservacion no existe' AS error_message;
+    ELSE
+        DELETE FROM reservas
+        WHERE ID_Reserva = p_ID_Reserva;
+        COMMIT;
+    END IF;
 END //
+
 DELIMITER ;
 
-CALL gestionar_reserva(1)
+-- eliminar las reservaciones---------------------
+CALL gestionar_reserva(2);
+
+DROP Procedure gestionar_reserva;
+
+
+
+
+-----------------------------------------------manda reportes-------------------------------------------
+
+
+DELIMITER //
+
+
+CREATE PROCEDURE mandarReportes(
+    IN p_tipo VARCHAR(50),
+    IN p_contenido VARCHAR(500),
+    IN p_fecha_creacion DATE,
+    IN p_hora TIME
+)
+BEGIN
+    IF p_tipo NOT IN ('mantenimiento', 'limpiar', 'reparacion', 'otros') THEN
+        SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Tipo no válido.';
+    ELSE
+        INSERT INTO reportes (tipo, contenido, fecha_creacion, hora)
+        VALUES (p_tipo, p_contenido, p_fecha_creacion, p_hora);
+    END IF;
+END//
+DELIMITER ;
+
+-----------------------eliminar el procedure de reportes--------------
+
+DROP Procedure `mandarReportes`
+
+-----------------------mandar reportes---------------------------------
+CALL mandarReportes("mantenimiento","puerta mala y pintura dañada",CURDATE(),TIME(NOW()))
+
+
